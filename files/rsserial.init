@@ -1,0 +1,44 @@
+#!/bin/sh
+# Example script
+# Copyright (C) 2007 OpenWrt.org
+
+START=99
+STOP=10
+ 
+start() {        
+#	if [ $# -eq 1 ]; then
+#	sleep ${5}
+#	fi
+	rsserial
+}                 
+ 
+stop() {
+	if [ -f /var/run/rsserial.pid ]; then         
+  kill $(cat /var/run/rsserial.pid)
+  #killall -9 rsserial
+	fi
+}
+
+restart() {
+	#sleep 5
+	stop
+	#sleep 2
+	start	
+}
+case "${1}" in
+	start)
+	start
+	;;          
+ 
+	stop)
+	stop
+  ;;
+
+	restart) 
+	restart
+	;;
+	*)
+	echo "Usage: $0 {start|stop|restart}"
+	exit 1
+esac 
+exit 0

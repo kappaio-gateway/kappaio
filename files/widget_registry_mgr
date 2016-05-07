@@ -1,0 +1,97 @@
+#!/usr/bin/php
+<?php
+/*
+#!/usr/bin/lua
+local JSON = (loadfile "/usr/lib/lua/luci/JSON.lua")()
+JSON.strictTypes = true
+local param = {
+	title = arg[1],
+	root = arg[2],
+	index = arg[3]
+}
+local req = { 
+	path = {"widget_registry"},
+	parameter = param,		
+	method = arg[4]
+}
+local req = JSON:encode({ver="0001",request=JSON:encode(req)})
+local rpc = io.popen("rsserial -j "..req:gsub("\\","\\\\"):gsub("\"","\\\""))
+local rsp = rpc:read("*a")
+print(rsp)
+rpc:close()
+*/
+/*
+$cmd = 'rsserial -j ';
+$param = array(
+    'title' => $argv[1],
+	'root' => $argv[2],
+	'index' => $argv[3],
+);
+$reqStr = json_encode(array(
+    'method'    => $argv[4],
+    'parameter' => $param,
+    'path'      => array("widget_registry"),
+));
+$qStr = json_encode(array(
+    'request' => $reqStr, 
+    'ver' => '0001',
+));
+$qStr = str_replace("\\", "\\\\", $qStr);
+$qStr = '"'.str_replace("\"", "\\\"", $qStr).'"';
+echo shell_exec($cmd.$qStr)
+*/
+$FILE="/usr/lib/rsserial/widget_registry.json";
+//$FILE="widget_registry.json";
+if (! file_exists ( $FILE ) ) {
+  file_put_contents($FILE, '{"list":[]}');
+}
+$param = array(
+ 'title' => $argv[1],
+ 'root' =>  $argv[2],
+ 'index' => $argv[3],
+);
+$method=$argv[4]?:"GET";
+$content=json_decode(file_get_contents($FILE),true);
+
+if ($method==="POST") {
+  $entryExist=false;
+   
+  for($i=0;$i<count($content["list"]);$i++) {
+    if ($content["list"][$i]['title']===$param['title']) {
+      $content["list"][$i] = $param;
+      $entryExist=true; 
+    }  
+  }
+  if (! $entryExist ) {
+    array_push($content['list'], $param);
+    echo "**ENTRY HAS BEEN ADDED** \r\n";
+  } else {
+    echo "**ENTRY HAS BEEN UPDATED** \r\n";
+  }
+
+  file_put_contents($FILE, json_encode($content)); 
+  echo "  title: ".$param['title']."\r\n";
+  echo "  root: ".$param['root']."\r\n";
+  echo "  index: ".$param['index']."\r\n"; 
+}
+
+if ($method==="DELETE") {
+  $entryExist=false;
+  for($i=0;$i<count($content["list"]);$i++) {
+    if ($content["list"][$i]['title']===$param['title']) {
+      unset($content["list"][$i]);
+      file_put_contents($FILE, json_encode($content)); 
+      $entryExist=true;
+    }  
+  }
+  if (! $entryExist ) {
+   echo "**ENTRY DOES NOT EXIST** \r\n";
+  } else {
+   echo "**ENTRY HAS BEEN DELETED** \r\n";
+  }
+  echo "  title: ".$param['title']."\r\n";
+  echo "  root: ".$param['root']."\r\n";
+  echo "  index: ".$param['index']."\r\n"; 
+
+}
+?>

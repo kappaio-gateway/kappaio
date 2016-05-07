@@ -1,0 +1,71 @@
+{
+	"0000":["0000","Basic",[],[]],
+	"0001":["0001","Power Configuration",
+		[ 
+			["0000", "MainsVoltage", 								"Unsigned 16-bit integer", 	1, 0, 	1, 65535,false],
+			["0001", "MainsFrequency",							"Unsigned 8-bit integer", 	1, 0, 	0, 65535,false],
+			["0010", "MainsAlarmMask", 							"8-bit bitmap",	3, 0, 	0, 3,false],
+			["0011", "MainsVoltageMinThreshold", 		"Unsigned 16-bit integer", 	3, 0, 	0, 65535,false],
+			["0012", "MainsVoltageMaxThreshold", 		"Unsigned 16-bit integer", 	3, 65535, 0, 65535,false],
+			["0013", "MainsVoltageDwellTripPoint", 	"Unsigned 16-bit integer", 	3, 0, 0, 65535,false]
+		],
+		[]
+	],
+	"0002":["0002","Device Temperature Configuration",
+		[
+			["0000","CurrentTemperature",			"Signed 16-bit integer", 1, 0,-200, 	200, 				true],
+			["0001","MinTempExperienced", 		"Signed 16-bit integer", 1, 0,-200, 	200, 				false],
+			["0002","MaxTempExperienced", 		"Signed 16-bit integer", 1, 0,-200, 	200,				false],
+			["0003","OverTempTotalDwell", 		"Unsigned 16-bit integer", 1, 0,0, 			65535,	false],
+			["0010","DeviceTempAlarmMask",		"8-bit bitmap",            3, 0,0, 			255, 		false],
+			["0011","LowTempThreshold", 			"Signed 16-bit integer", 3, 0,-200, 	200,				false],
+			["0012","HighTempThreshold", 			"Signed 16-bit integer", 3, 0,-200, 	200,				false],
+			["0013","LowTempDwellTripPoint", 	"Signed 24-bit integer", 3, 0,0, 			65535,	false],
+			["0014","HighTempDwellTripPoint", "Signed 24-bit integer", 3, 0,0, 			65535,	false]
+		],
+		[]
+	],
+	"0003":["0003","Identify",
+		[
+			["0000", "Identify Time",					"Unsigned 16-bit integer", 3, 0,0, 			65535,	true]
+		],
+		[]
+	],	
+	"0004":["0004","Groups",
+		[
+			["0000", "NameSupport", "8-bit bitmap", 1, 0, 0, 0, true]
+		],
+		[]
+	],
+	"0005":["0005","Scenes",
+		[
+			["0000","SceneCount",				"Unsigned 8-bit integer",				1, 0, 0, 65535,	true],
+			["0001","CurrentScene",			"Unsigned 8-bit integer", 			1, 0, 0, 65535, 	true],
+			["0002","CurrentGroup",			"Unsigned 8-bit integer",			1, 0, 0, 65527, 	true],
+			["0003","SceneValid",				"Boolean",	1, 0, 0, 1, 					true],
+			["0004","NameSupport",			"8-bit bitmap",			1, 0, 0, 0,						true],
+			["0005","LastConfiguredBy",	"IEEE address",	1, 0, 0, 65535, 	true]
+		],
+		[]
+	],
+	"0006":["0006","OnOff",
+		[
+			["0000","OnOff", 		"Boolean",	1, 0, 0,1, true]
+		],
+		[
+			["00", "Off", null],
+			["01", "On", null],
+			["02", "Toggle", null]
+		]
+	],
+	"0008":["0008", "LevelControl",
+		[
+			["0000","CurrentLevel", 				"Unsigned 8-bit integer",		1, 			0, 0,65535, true],
+			["0001","RemainingTime", 				"Unsigned 16-bit integer",	1, 			0, 0,65535, false],
+			["0010","OnOffTransitionTime", 	"Unsigned 16-bit integer",	3, 	0, 0,65535, false],
+			["0011","OnLevel", 							"Unsigned 8-bit integer",		3, 	254, 0,65534, false]
+		],
+		[]
+	]
+}
+

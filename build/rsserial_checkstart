@@ -1,0 +1,7 @@
+#! /bin/sh
+
+rstmp_path=./rstmp
+#[ -f $rstmp_path ] && echo "file exist" || echo "file not exist"
+#[ -h $rstmp_path ] && echo "link exist" || echo "link not exist"
+if [ ! -h $rstmp_path ] && ln -s /tmp $rstmp_path
+

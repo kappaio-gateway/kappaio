@@ -1,0 +1,33 @@
+#! /bin/bash
+
+cd ../ && packageName=$(basename ${PWD}) && cd ${OLDPWD}
+cd ../../ && export SDK_Package_Root=${PWD} && cd ${OLDPWD}
+RELEASE_BUILD_PATH=""
+
+while [[ $# > 1 ]]
+do
+key="$1"
+
+case $key in
+    -t|--target)
+    TARGET="$2"
+    shift # past argument
+    ;;
+    -r|--releasepath)
+    cd "$2" && export RELEASE_BUILD_PATH=${PWD} && cd ${OLDPWD}    
+    shift # past argument
+    ;;
+    -p|--packagename)
+    packageName="$2"
+    shift # past argument
+    ;;
+    *)
+            # unknown option
+    ;;
+esac
+shift # past argument or value
+done
+#export RELEASE_BUILD_PATH
+#export processor_family=$(echo ${2} | tr '[:lower:]' '[:upper:]')
+( cd ../../../ && make package/${packageName}/clean V=s && make package/${packageName}/compile SCP=scp SSH=ssh ${packageName}_DST=${TARGET} V=s )
+
