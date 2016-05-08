@@ -12,7 +12,7 @@ include(FindPkgConfig)
 #pkg_check_modules(openssl openssl>=1.0.1)
 #find_package(libkapi)
 
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../kapi ${CMAKE_CURRENT_SOURCE_DIR}/build/kapi)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../kapi build/kapi)
 #include_directories(${CMAKE_CURRENT_SOURCE_DIR}/kapi/include)
 
 

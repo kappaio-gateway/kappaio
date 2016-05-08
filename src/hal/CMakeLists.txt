@@ -12,8 +12,8 @@ set( CMAKE_SKIP_BUILD_RPATH true )
 #link_directories( bin )
 include(FindPkgConfig)
 
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../kapi ${CMAKE_CURRENT_SOURCE_DIR}/build/kapi)
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../kdev ${CMAKE_CURRENT_SOURCE_DIR}/build/kdev)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../kapi build/kapi)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../kdev build/kdev)
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c++11 -pedantic -D__LITTLE_ENDIAN__")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pedantic -D__LITTLE_ENDIAN__")
