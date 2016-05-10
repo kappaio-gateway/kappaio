@@ -26,7 +26,7 @@
 #include "apsdb.h"
 #include <stdio.h>
 #include "kjson.h"
-//#define _ZDO_ARCHIVE_LOCATION "/usr/lib/rsserial/zdo_archive.json"
+//#define _ZDO_ARCHIVE_LOCATION "/usr/lib/kappaio/files/zdo_archive.json"
 
 int saveDevApdu(aps::Device *pDevice, const char *label, uint8_t *apdu, size_t apduLength);
 int saveEndpointApdu(aps::Endpoint *pEndpoint, const char *label, uint8_t *apdu, size_t apduLength);
@@ -35,7 +35,7 @@ namespace ZDO
 {
 	namespace ARCHIVE
 	{
-		const char _ZDO_ARCHIVE_LOCATION[] =  "/usr/lib/rsserial/zdo_archive.json";
+		const char _ZDO_ARCHIVE_LOCATION[] =  "/usr/lib/kappaio/files/zdo_archive.json";
 
 		inline void clear() {
 			//remove(_ZDO_ARCHIVE_LOCATION);

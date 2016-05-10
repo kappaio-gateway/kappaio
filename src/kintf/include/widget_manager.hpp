@@ -32,7 +32,7 @@ namespace kapi
 	namespace widget_manager
 	{
 		using Context = ApplicationInterface::Context;
-		static const char widget_registry_json[] = "/usr/lib/rsserial/widget_registry.json";
+		static const char widget_registry_json[] = "/usr/lib/kappaio/files/widget_registry.json";
 		// assumptions:
 		// 1. bl_ is of type JSON_OBJECT
 		// 2. every element in bl_ is of type JSON_STRING

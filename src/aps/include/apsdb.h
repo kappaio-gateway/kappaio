@@ -35,10 +35,10 @@
 #include "kjson.h"
 #include "aps_afmessage_impl.h"
 
-#define JSON_ZCLPROFILES   "/usr/lib/rsserial/zclprofiles.json"
-#define JSON_CLUSTERS_FILE "/usr/lib/rsserial/zclclusters.json"
-#define JSON_ZCL_DATATYPES "/usr/lib/rsserial/zcldatatypes.json"
-#define JSON_WIDGET_LIB	   "/usr/lib/rsserial/widget.json"
+#define JSON_ZCLPROFILES   "/usr/lib/kappaio/files/zclprofiles.json"
+#define JSON_CLUSTERS_FILE "/usr/lib/kappaio/files/zclclusters.json"
+#define JSON_ZCL_DATATYPES "/usr/lib/kappaio/files/zcldatatypes.json"
+#define JSON_WIDGET_LIB	   "/usr/lib/kappaio/files/widget.json"
 
 namespace aps
 {

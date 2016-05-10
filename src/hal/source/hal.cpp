@@ -41,7 +41,7 @@
 #include <time.h>
 #include <stdio.h>
 
-#define RSSERIAL_LAST_FAILED_PING "/rstmp/rsserial-last-failed-ping"
+#define KAPPAIO_LAST_FAILED_PING "/rstmp/kappaio-last-failed-ping"
 #define MINIUM_FAILED_PING_WAIT_SEC 40
 
 namespace halPrivate
@@ -216,14 +216,14 @@ int systemPing(processorStatus_t *status)
 
 	/* check for last failed ping, if file doesn't exist, create one */
 
-	if (access(RSSERIAL_LAST_FAILED_PING, F_OK) <0)
+	if (access(KAPPAIO_LAST_FAILED_PING, F_OK) <0)
 	{
-		file = fopen (RSSERIAL_LAST_FAILED_PING, "w+");
+		file = fopen (KAPPAIO_LAST_FAILED_PING, "w+");
 		fprintf(file, "0");
 		fclose(file);
 	}
 
-	file = fopen (RSSERIAL_LAST_FAILED_PING, "r");
+	file = fopen (KAPPAIO_LAST_FAILED_PING, "r");
 	fscanf(file, "%d", &lastFailedPing);
 	fclose(file);
 
@@ -245,7 +245,7 @@ int systemPing(processorStatus_t *status)
 	} else {
 		if (halPrivate::consecutiveFailedPing > 3)
 		{
-			file = fopen (RSSERIAL_LAST_FAILED_PING, "w+");
+			file = fopen (KAPPAIO_LAST_FAILED_PING, "w+");
 			fprintf(file, "%ld", time(NULL));
 			fclose(file);
 		} else {
@@ -420,7 +420,7 @@ namespace HAL {
 		int sec = *( (int*) td);
 		syslog(LOG_INFO, "reset in %d sec", sec);
 		kSleep(sec);
-		system("/etc/init.d/rsserial-watch restart");
+		system("/etc/init.d/kappaio-watch restart");
 	}
 	int delayRestart(int sec)
 	{
@@ -463,7 +463,7 @@ namespace HAL {
 //			pthread_t thread;
 //			pthread_create(&thread, NULL, delayRestart_, (void *)NULL);
 //			pthread_detach(thread);
-//			syslog(LOG_INFO, "Set channel successful, now restart rsserial...");
+//			syslog(LOG_INFO, "Set channel successful, now restart kappaio...");
 //			interPanSet(channel);
 //			return 0;
 //		} else {
