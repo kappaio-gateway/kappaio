@@ -7,13 +7,15 @@ For a quick try on the Linux ZigBee gateway with pre-built Raspberry Pi images, 
 kappaio is written mostly in C/C++ with plans to interface with languages including but not limited to php, javascript, lua, go, depending on the user-base.
 
 Supported hardware:
-- Linux host: 
- - Raspberry Pi ( all models)
- - Beagle Bone
 - ZigBee Module: 
  - TI CC2531 USB dongle with Z-Stack 2.5.1a; for firmware images, go to [https://kappa.io/download#cc2531-dongle](https://kappa.io/download#cc2531-dongle)
 
 ##Build and install
+You need cmake for the compilation:
+```
+sudo apt-get install cmake
+```
+Now build the package
 ```
 git clone https://github.com/kappaIO-Dev/kappaio.git
 cd kappaio/cmake-build
