@@ -92,8 +92,8 @@ namespace remote
 
 	namespace client_files
 	{
-		const char deviceData[] = "/usr/lib/rsserial/device_data";
-		const char certifcate[]	= "/usr/lib/rsserial/kcert.pem";
+		const char deviceData[] = "/usr/lib/kappaio/files/device_data";
+		const char certifcate[]	= "/usr/lib/kappaio/files/kcert.pem";
 	}
 
 	namespace tags

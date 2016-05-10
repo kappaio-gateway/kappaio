@@ -384,15 +384,15 @@ int Base64Encode(const unsigned char* message, size_t messageSize, char** buffer
   return encodedSize; //success
 }
 
-#define WIDGETZIPBUFFER "/tmp/rsserialtempfiles/widgetbuf.tgz"
-#define RESULTANTZIP    "/tmp/rsserialtempfiles/resultantzip.tgz"
+#define WIDGETZIPBUFFER "/tmp/kappaio-temp-files/widgetbuf.tgz"
+#define RESULTANTZIP    "/tmp/kappaio-temp-files/resultantzip.tgz"
 
 int EncodeDir(const char *fileName, char **pbuffer)
 {
 	char command[256];
 	size_t commandPos = 0;
 
-	commandPos += sprintf(command, "mkdir -p /tmp/rsserialtempfiles/ && tar -cz -f %s -C %s . > /tmp/errorlog 2>&1", WIDGETZIPBUFFER, fileName);
+	commandPos += sprintf(command, "mkdir -p /tmp/kappaio-temp-files/ && tar -cz -f %s -C %s . > /tmp/errorlog 2>&1", WIDGETZIPBUFFER, fileName);
 
 	FILE *tgzCommand = popen(command, "r");
 	pclose(tgzCommand);

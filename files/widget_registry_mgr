@@ -15,13 +15,13 @@ local req = {
 	method = arg[4]
 }
 local req = JSON:encode({ver="0001",request=JSON:encode(req)})
-local rpc = io.popen("rsserial -j "..req:gsub("\\","\\\\"):gsub("\"","\\\""))
+local rpc = io.popen("kappaio -j "..req:gsub("\\","\\\\"):gsub("\"","\\\""))
 local rsp = rpc:read("*a")
 print(rsp)
 rpc:close()
 */
 /*
-$cmd = 'rsserial -j ';
+$cmd = 'kappaio -j ';
 $param = array(
     'title' => $argv[1],
 	'root' => $argv[2],
@@ -40,7 +40,7 @@ $qStr = str_replace("\\", "\\\\", $qStr);
 $qStr = '"'.str_replace("\"", "\\\"", $qStr).'"';
 echo shell_exec($cmd.$qStr)
 */
-$FILE="/usr/lib/rsserial/widget_registry.json";
+$FILE="/usr/lib/kappaio/files/widget_registry.json";
 //$FILE="widget_registry.json";
 if (! file_exists ( $FILE ) ) {
   file_put_contents($FILE, '{"list":[]}');

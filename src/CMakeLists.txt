@@ -5,7 +5,7 @@ set(CMAKE_DISABLE_IN_SOURCE_BUILD ON)
 set(CMAKE_VERBOSE_MAKEFILE ON)
 set(CMAKE_COLOR_MAKEFILE   ON)
 
-project(rsserial C CXX)
+project(kappaio C CXX)
 
 
 set(LIBS "kapi;hal;kdev;kintf;aps;zdo")

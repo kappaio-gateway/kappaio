@@ -10,9 +10,9 @@ project(kintf C CXX)
 
 include(FindPkgConfig)
 
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../kapi ${CMAKE_CURRENT_SOURCE_DIR}/build/kapi)
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../hal ${CMAKE_CURRENT_SOURCE_DIR}/build/hal)
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../aps ${CMAKE_CURRENT_SOURCE_DIR}/build/aps)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../kapi build/kapi)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../hal build/hal)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../aps build/aps)
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -x c++ -std=c++11 -pedantic -D__LITTLE_ENDIAN__")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pedantic -D__LITTLE_ENDIAN__")

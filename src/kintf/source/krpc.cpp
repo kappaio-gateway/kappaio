@@ -50,7 +50,7 @@
 //
 //	if (unixClientSock < 0)
 //	{
-//		printf("failed to open rsserialusock");
+//		printf("failed to open kappaio-usock");
 //		return rtn;
 //	}
 //

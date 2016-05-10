@@ -56,7 +56,7 @@
 #define MTQO "/etc/rssq/mtqo"
 #define CMQI "/etc/rssq/cmqi"
 #define CMQO "/etc/rssq/cmqo"
-#define PIDF "/var/run/rsserial.pid"
+#define PIDF "/var/run/kappaio.pid"
 #define PMODE 0666 // everyone has access to the queue
 #define PPMODE S_IRGRP|S_IROTH|S_IRUSR|S_IWGRP|S_IWOTH|S_IWUSR
 #define CLOCKID CLOCK_REALTIME

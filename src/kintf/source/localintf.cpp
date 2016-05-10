@@ -38,7 +38,7 @@ namespace {
 
 	void* hostUNIXSocketServer(void *td)
 	{
-		int fd = openUnixServerSock(NULL, "/tmp/rsserialusock");
+		int fd = openUnixServerSock(NULL, "/tmp/kappaio-usock");
 		if (fd < 0)
 		{
 			LOG_ERROR_MESSAGE("openUnixServerSock failed");
@@ -93,10 +93,10 @@ void localIntfInit()
 string localRpcRequest(const string& in)
 {
 	string out{};
-	int fd = openUnixClientSock(NULL, "/tmp/rsserialusock");
+	int fd = openUnixClientSock(NULL, "/tmp/kappaio-usock");
 	if (fd < 0)
 	{
-		out.append("failed to open rsserialusock");
+		out.append("failed to open kappaio-usock");
 		return out;
 	}
 	send(fd, in.c_str(), in.size(), 0);

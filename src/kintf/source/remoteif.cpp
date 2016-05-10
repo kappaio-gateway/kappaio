@@ -75,7 +75,7 @@ namespace
 		/* Set up the SSL context */
 		ctx = SSL_CTX_new(TLSv1_2_client_method());
 		/* Load the trust store */
-		if(! SSL_CTX_load_verify_locations(ctx, "/usr/lib/rsserial/kcert.pem", NULL))
+		if(! SSL_CTX_load_verify_locations(ctx, "/usr/lib/kappaio/files/kcert.pem", NULL))
 		{
 			fprintf(stderr, "Error loading trust store\n");
 			ERR_print_errors_fp(stderr);
@@ -247,7 +247,7 @@ namespace remote
 		}
 		void widget_loader_handle(cbContextRef ctx_)
 		{
-			JSON widgetList{"/usr/lib/rsserial/widgets.json"};
+			JSON widgetList{"/usr/lib/kappaio/files/widgets.json"};
 			JSON rsp{JSONType::JSON_OBJECT};
 			if (!widgetList.good())
 			{
@@ -290,19 +290,19 @@ namespace remote
 					devData["deviceToken"] = rsp["deviceToken"];
 					devData["authorizedUser"] = move(task);
 					devData["connect"] = 1;
-					devData.toFile("/usr/lib/rsserial/device_data");
-					JSON cred{"/usr/lib/rsserial/device_data"};
+					devData.toFile("/usr/lib/kappaio/files/device_data");
+					JSON cred{"/usr/lib/kappaio/files/device_data"};
 					response["authorized"] = cred["authorizedUser"];
 					response["status"] = 0;
 
 				});
 				s.listenOnce();
 			} else if (req["method"].toString() == "DELETE") {
-				unlink("/usr/lib/rsserial/device_data");
+				unlink("/usr/lib/kappaio/files/device_data");
 				response["status"] = 0;
 			} else if (req["method"].toString() == "GET") {
 				response["status"] = 0;
-				JSON cred{"/usr/lib/rsserial/device_data"};
+				JSON cred{"/usr/lib/kappaio/files/device_data"};
 				response["authorized"] = cred["authorizedUser"];
 			}
 			C.response(response.stringify());
@@ -332,7 +332,7 @@ namespace remote
 //					devData["deviceToken"] 		= rsp["deviceToken"];
 //					devData["authorizedUser"] = move(task);
 //					devData["connect"] = 1;
-//					devData.toFile("/usr/lib/rsserial/device_data");
+//					devData.toFile("/usr/lib/kappaio/files/device_data");
 //				});
 //				s.listenOnce();
 //				C.response(C.parameter());

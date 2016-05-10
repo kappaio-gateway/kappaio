@@ -239,7 +239,7 @@ namespace zdo_private
 			LOG_MESSAGE("Bad/nonexistent archive file, now re-initialize...");
 			ZDO::ARCHIVE::clear();
 			HAL::zcdStartupOptions(0x03);
-			LOG_MESSAGE("rsserial going down to restart...");
+			LOG_MESSAGE("kappaio going down for restart...");
 			HAL::delayRestart(1);
 			return -1;
 		}
