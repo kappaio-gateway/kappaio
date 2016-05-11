@@ -269,6 +269,7 @@ int main(int argc, char **argv)
 						LOG_ERROR_MESSAGE("error when loading %s : %s\n", endpoint_plugin,dlerror());
 					} else {
 						fn();
+                        LOG_MESSAGE("Loaded plugin : %s", endpoint_plugin);
 					}
 				}
 			}
