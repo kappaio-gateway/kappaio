@@ -6,6 +6,7 @@ if [ ! -h /rstmp ]; then
 fi
 [ ! -L /usr/lib/rsserial ] && ( cd /usr/lib; ln -s kappaio/files rsserial )
 [ ! -L /usr/bin/rsserial ] && ( cd /usr/bin; ln -s kappaio rsserial )
+(cd /usr/lib/kappaio; mkdir plugins; cd files; ln -s ../plugins endpoints)
 if [ ! -f /usr/lib/kappaio/files/widget_registry.json ]; then
 	cp /tmp/widget_registry.json /usr/lib/kappaio/files/
 	echo "widget_registry.json does not exist, use default"
