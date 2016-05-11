@@ -1,45 +1,5 @@
 #!/usr/bin/php
 <?php
-/*
-#!/usr/bin/lua
-local JSON = (loadfile "/usr/lib/lua/luci/JSON.lua")()
-JSON.strictTypes = true
-local param = {
-	title = arg[1],
-	root = arg[2],
-	index = arg[3]
-}
-local req = { 
-	path = {"widget_registry"},
-	parameter = param,		
-	method = arg[4]
-}
-local req = JSON:encode({ver="0001",request=JSON:encode(req)})
-local rpc = io.popen("kappaio -j "..req:gsub("\\","\\\\"):gsub("\"","\\\""))
-local rsp = rpc:read("*a")
-print(rsp)
-rpc:close()
-*/
-/*
-$cmd = 'kappaio -j ';
-$param = array(
-    'title' => $argv[1],
-	'root' => $argv[2],
-	'index' => $argv[3],
-);
-$reqStr = json_encode(array(
-    'method'    => $argv[4],
-    'parameter' => $param,
-    'path'      => array("widget_registry"),
-));
-$qStr = json_encode(array(
-    'request' => $reqStr, 
-    'ver' => '0001',
-));
-$qStr = str_replace("\\", "\\\\", $qStr);
-$qStr = '"'.str_replace("\"", "\\\"", $qStr).'"';
-echo shell_exec($cmd.$qStr)
-*/
 $FILE="/usr/lib/kappaio/files/widget_registry.json";
 //$FILE="widget_registry.json";
 if (! file_exists ( $FILE ) ) {
@@ -92,6 +52,5 @@ if ($method==="DELETE") {
   echo "  title: ".$param['title']."\r\n";
   echo "  root: ".$param['root']."\r\n";
   echo "  index: ".$param['index']."\r\n"; 
-
 }
 ?>
