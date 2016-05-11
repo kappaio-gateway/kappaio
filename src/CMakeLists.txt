@@ -23,5 +23,9 @@ add_executable(${PROJECT_NAME} ${CPP_FILES})
 
 target_link_libraries(${PROJECT_NAME} dl ${LIBS})
 
-
-
+set_property(TARGET kappaio PROPERTY INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR})
+foreach(LIB ${LIBS})
+get_property(mydir_s TARGET ${LIB} PROPERTY INTERFACE_INCLUDE_DIRECTORIES)
+get_property(mydir_t TARGET kappaio PROPERTY INTERFACE_INCLUDE_DIRECTORIES)
+set_property(TARGET kappaio PROPERTY INTERFACE_INCLUDE_DIRECTORIES "${mydir_t};${mydir_s}")
+endforeach(LIB)

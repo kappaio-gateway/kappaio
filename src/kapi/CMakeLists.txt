@@ -24,6 +24,7 @@ target_include_directories(kapi PUBLIC include)
 target_link_libraries(${PROJECT_NAME} ${openssl_LIBRARIES} ${jansson_LIBRARIES} pthread)
 set_property(TARGET ${PROJECT_NAME} PROPERTY VERSION "0.1.0")
 set_property(TARGET ${PROJECT_NAME} PROPERTY SOVERSION 0)
+
 else()
 message("-- kappaio-dev : kapi is included more then once")
 endif()

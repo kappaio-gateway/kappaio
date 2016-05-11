@@ -24,8 +24,8 @@ target_include_directories(aps PUBLIC include)
 target_link_libraries(${PROJECT_NAME} kapi hal)
 set_property(TARGET ${PROJECT_NAME} PROPERTY VERSION "0.1.0")
 set_property(TARGET ${PROJECT_NAME} PROPERTY SOVERSION 0)
-else()
 
+else()
 message("-- kappaio-dev : aps is included more than once")
 
 endif(NOT TARGET aps)
